@@ -35,6 +35,14 @@ namespace WebApiFuncionariosCRUD.Controllers
             return Ok(await _funcionarioInterface.CreateFuncionario(funcionario));
         }
 
+        [HttpPut]
+        public async Task<ActionResult<ServiceResponse<List<FuncionarioModel>>>> UpdateFuncionario([FromBody] FuncionarioModel funcionarioAtualizado)
+        {
+            ServiceResponse<List<FuncionarioModel>> serviceResponse = await _funcionarioInterface.UpdateFuncionario(funcionarioAtualizado);
+
+            return Ok(serviceResponse);
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult<ServiceResponse<List<FuncionarioModel>>>> InativaFuncionario(int id)
         {

@@ -1,4 +1,5 @@
-﻿using WebApiFuncionariosCRUD.DataContext;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebApiFuncionariosCRUD.DataContext;
 using WebApiFuncionariosCRUD.Models;
 
 namespace WebApiFuncionariosCRUD.Service
@@ -128,9 +129,36 @@ namespace WebApiFuncionariosCRUD.Service
             
         }
 
-        public Task<ServiceResponse<List<FuncionarioModel>>> UpdateFuncionario(FuncionarioModel funcionario)
+        public async Task<ServiceResponse<List<FuncionarioModel>>> UpdateFuncionario(FuncionarioModel funcionarioAtualizado)
         {
-            throw new NotImplementedException();
+            ServiceResponse<List<FuncionarioModel>> serviceResponse = new ServiceResponse<List<FuncionarioModel>>();
+
+            try
+            {
+                FuncionarioModel funcionario = _context.Funcionarios.FirstOrDefault(x => x.Id == funcionarioAtualizado.Id);
+
+                if (funcionario == null)
+                {
+                    serviceResponse.Sucesso = false;
+                    serviceResponse.Mensagem = "Funcionario nao localizado";
+                    serviceResponse.Dados = null;
+                }
+
+                funcionario.DataDeAlteracao = DateTime.Now.ToLocalTime();
+
+                _context.Funcionarios.Update(funcionarioAtualizado);
+                await _context.SaveChangesAsync();
+
+                serviceResponse.Dados = _context.Funcionarios.ToList();
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Mensagem = ex.Message;
+                serviceResponse.Sucesso = false;
+            }
+
+            return serviceResponse;
+
         }
     }
 }
