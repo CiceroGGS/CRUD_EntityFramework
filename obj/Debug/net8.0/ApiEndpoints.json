@@ -1,0 +1,48 @@
+[
+  {
+    "ContainingType": "WebApiFuncionariosCRUD.Controllers.FuncionarioController",
+    "Method": "GetFuncionarios",
+    "RelativePath": "api/Funcionario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "WebApiFuncionariosCRUD.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[WebApiFuncionariosCRUD.Models.FuncionarioModel, WebApiFuncionariosCRUD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApiFuncionariosCRUD.Controllers.FuncionarioController",
+    "Method": "CreateFuncionario",
+    "RelativePath": "api/Funcionario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "funcionario",
+        "Type": "WebApiFuncionariosCRUD.Models.FuncionarioModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WebApiFuncionariosCRUD.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[WebApiFuncionariosCRUD.Models.FuncionarioModel, WebApiFuncionariosCRUD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
