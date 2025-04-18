@@ -124,6 +124,43 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Funcionario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuncionarioModelListServiceResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuncionarioModelListServiceResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuncionarioModelListServiceResponse"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/Funcionario/{id}": {
@@ -164,7 +201,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Funcionario/InativaFuncionario": {
       "put": {
         "tags": [
           "Funcionario"
@@ -172,8 +211,7 @@
         "parameters": [
           {
             "name": "id",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -209,14 +247,13 @@
     "schemas": {
       "DepertamentoEnum": {
         "enum": [
-          0,
-          1,
-          2,
-          3,
-          4
+          "RH",
+          "Financeiro",
+          "Compras",
+          "Atendimento",
+          "Zeladoria"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "FuncionarioModel": {
         "type": "object",
@@ -291,12 +328,11 @@
       },
       "TurnoEnum": {
         "enum": [
-          0,
-          1,
-          2
+          "Manha",
+          "Tarde",
+          "Noite"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       }
     }
   }

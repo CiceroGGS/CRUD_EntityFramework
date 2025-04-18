@@ -43,7 +43,7 @@ namespace WebApiFuncionariosCRUD.Controllers
             return Ok(serviceResponse);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("InativaFuncionario")]
         public async Task<ActionResult<ServiceResponse<List<FuncionarioModel>>>> InativaFuncionario(int id)
         {
             ServiceResponse<List<FuncionarioModel>> serviceResponmse = await _funcionarioInterface.InativaFuncionario(id);
@@ -51,6 +51,13 @@ namespace WebApiFuncionariosCRUD.Controllers
                 return Ok(serviceResponmse);
         }
 
+        [HttpDelete]
+        public async Task<ActionResult<ServiceResponse<List<FuncionarioModel>>>> DeleteFuncionario(int id)
+        {
+            ServiceResponse<List<FuncionarioModel>> serviceResponse = await _funcionarioInterface.DeleteFuncionario(id);
+
+            return Ok(serviceResponse);
+        }
     }
 }
 

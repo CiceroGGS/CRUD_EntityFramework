@@ -22,7 +22,7 @@ namespace WebApiFuncionariosCRUD.Service
                 if (funcionario == null)
                 {
                     serviceResponse.Dados = null;
-                    serviceResponse.Mensagem = "Informardados";
+                    serviceResponse.Mensagem = "Informar Dados";
                     serviceResponse.Sucesso = false;
 
                     return serviceResponse;
@@ -37,15 +37,39 @@ namespace WebApiFuncionariosCRUD.Service
             {
                 serviceResponse.Mensagem = ex.Message;
                 serviceResponse.Sucesso = false;
-
             }
 
             return serviceResponse;
         }
 
-        public Task<ServiceResponse<List<FuncionarioModel>>> DeleteFuncionario(int id)
+        public async Task<ServiceResponse<List<FuncionarioModel>>> DeleteFuncionario(int id)
         {
-            throw new NotImplementedException();
+            ServiceResponse<List<FuncionarioModel>> serviceResponse = new ServiceResponse<List<FuncionarioModel>>();
+
+            try
+            {
+                FuncionarioModel funcionario = _context.Funcionarios.FirstOrDefault(x => x.Id == id);
+
+                if(funcionario == null)
+                {
+                    serviceResponse.Dados = null;
+                    serviceResponse.Mensagem = "Usuario nao localizado";
+                    serviceResponse.Sucesso = false;
+                }
+
+
+                _context.Funcionarios.Remove(funcionario);
+                await _context.SaveChangesAsync();
+
+                serviceResponse.Dados = _context.Funcionarios.ToList();
+
+            }catch(Exception ex)
+            {
+                serviceResponse.Mensagem = ex.Message;
+                serviceResponse.Sucesso = false;
+            }
+
+            return serviceResponse;
         }
 
         public async Task<ServiceResponse<FuncionarioModel>> GetFuncionarioById(int id)
