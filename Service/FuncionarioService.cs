@@ -33,9 +33,6 @@ namespace WebApiFuncionariosCRUD.Service
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erro principal: " + ex.Message);
-                if (ex.InnerException != null)
-                    Console.WriteLine("Inner exception: " + ex.InnerException.Message);
                 serviceResponse.Mensagem = ex.Message;
                 serviceResponse.Sucesso = false;
 
@@ -49,9 +46,31 @@ namespace WebApiFuncionariosCRUD.Service
             throw new NotImplementedException();
         }
 
-        public Task<ServiceResponse<FuncionarioModel>> GetFuncionarioById(int id)
+        public async Task<ServiceResponse<FuncionarioModel>> GetFuncionarioById(int id)
         {
-            throw new NotImplementedException();
+            ServiceResponse<FuncionarioModel> serviceResponse = new ServiceResponse<FuncionarioModel>();
+
+            try
+            {
+                FuncionarioModel funcionario = _context.Funcionarios.FirstOrDefault(x => x.Id == id);
+
+                if(funcionario == null)
+                {
+                    serviceResponse.Dados = null;
+                    serviceResponse.Mensagem = "Usuario nao localizado";
+                    serviceResponse.Sucesso = false;
+                }
+
+                serviceResponse.Dados = funcionario;
+            }
+            catch(Exception ex)
+            {
+                serviceResponse.Mensagem = ex.Message;
+                serviceResponse.Sucesso= false; 
+            }
+
+            return serviceResponse;
+        
         }
 
         public async Task<ServiceResponse<List<FuncionarioModel>>> GetFuncionarios()
@@ -75,9 +94,38 @@ namespace WebApiFuncionariosCRUD.Service
             return serviceResponse;
         }
 
-        public Task<ServiceResponse<List<FuncionarioModel>>> InativaFuncionario(int id)
+        public async Task<ServiceResponse<List<FuncionarioModel>>> InativaFuncionario(int id)
         {
-            throw new NotImplementedException();
+            ServiceResponse<List<FuncionarioModel>> serviceResponse = new ServiceResponse<List<FuncionarioModel>>();
+
+            try
+            {
+                FuncionarioModel funcionario = _context.Funcionarios.FirstOrDefault(x => x.Id == id);
+
+                if(funcionario == null)
+                {
+                    serviceResponse.Dados = null;
+                    serviceResponse.Mensagem = "Usuario nao localizado";
+                    serviceResponse.Sucesso = false;
+                }
+
+                funcionario.Ativo = false;
+                funcionario.DataDeAlteracao = DateTime.Now.ToLocalTime();
+                
+                _context.Funcionarios.Update(funcionario);
+                await _context.SaveChangesAsync();
+
+                serviceResponse.Dados = _context.Funcionarios.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Mensagem = ex.Message;
+                serviceResponse.Sucesso = false;
+            }
+
+            return serviceResponse;
+            
         }
 
         public Task<ServiceResponse<List<FuncionarioModel>>> UpdateFuncionario(FuncionarioModel funcionario)

@@ -170,3 +170,4 @@ C:\Users\c\Desktop\PROJETOS\CRUD DOTNET\WebApiFuncionariosCRUD\WebApiFuncionario
 C:\Users\c\Desktop\PROJETOS\CRUD DOTNET\WebApiFuncionariosCRUD\WebApiFuncionariosCRUD\obj\Debug\net8.0\WebApiFuncionariosCRUD.pdb
 C:\Users\c\Desktop\PROJETOS\CRUD DOTNET\WebApiFuncionariosCRUD\WebApiFuncionariosCRUD\obj\Debug\net8.0\WebApiFuncionariosCRUD.genruntimeconfig.cache
 C:\Users\c\Desktop\PROJETOS\CRUD DOTNET\WebApiFuncionariosCRUD\WebApiFuncionariosCRUD\obj\Debug\net8.0\ref\WebApiFuncionariosCRUD.dll
+C:\Users\c\Desktop\PROJETOS\CRUD DOTNET\WebApiFuncionariosCRUD\WebApiFuncionariosCRUD\obj\Debug\net8.0\WebApiFuncionariosCRUD.sourcelink.json

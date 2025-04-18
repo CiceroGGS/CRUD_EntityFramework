@@ -12,4 +12,4 @@ namespace WebApiFuncionariosCRUD.Service
         Task<ServiceResponse<List<FuncionarioModel>>> InativaFuncionario(int id);
 
     }
-}
+} 
