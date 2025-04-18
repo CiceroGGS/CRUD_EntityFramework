@@ -47,6 +47,32 @@
   },
   {
     "ContainingType": "WebApiFuncionariosCRUD.Controllers.FuncionarioController",
+    "Method": "UpdateFuncionario",
+    "RelativePath": "api/Funcionario",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "funcionarioAtualizado",
+        "Type": "WebApiFuncionariosCRUD.Models.FuncionarioModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "WebApiFuncionariosCRUD.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[WebApiFuncionariosCRUD.Models.FuncionarioModel, WebApiFuncionariosCRUD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApiFuncionariosCRUD.Controllers.FuncionarioController",
     "Method": "GetFuncionarioById",
     "RelativePath": "api/Funcionario/{id}",
     "HttpMethod": "GET",

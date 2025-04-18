@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApiFuncionariosCRUD.DataContext;
 using WebApiFuncionariosCRUD.Models;
 
@@ -135,7 +136,7 @@ namespace WebApiFuncionariosCRUD.Service
 
             try
             {
-                FuncionarioModel funcionario = _context.Funcionarios.FirstOrDefault(x => x.Id == funcionarioAtualizado.Id);
+                FuncionarioModel funcionario = _context.Funcionarios.AsNoTracking().FirstOrDefault(x => x.Id == funcionarioAtualizado.Id);
 
                 if (funcionario == null)
                 {
