@@ -43,7 +43,7 @@ namespace WebApiFuncionariosCRUD.Controllers
             return Ok(serviceResponse);
         }
 
-        [HttpPut("InativaFuncionario")]
+        [HttpPut("InativaFuncionario/{id}")]
         public async Task<ActionResult<ServiceResponse<List<FuncionarioModel>>>> InativaFuncionario(int id)
         {
             ServiceResponse<List<FuncionarioModel>> serviceResponmse = await _funcionarioInterface.InativaFuncionario(id);
